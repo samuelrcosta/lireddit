@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  db:
+    image: postgres:12.3-alpine
+    container_name: lireddit-db
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./storage/db/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
